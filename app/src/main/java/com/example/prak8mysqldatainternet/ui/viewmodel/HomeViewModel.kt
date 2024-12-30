@@ -11,8 +11,6 @@ import com.example.prak8mysqldatainternet.model.Mahasiswa
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-
-
 sealed class HomeUiState {
     data class Success(val mahasiswa: List<Mahasiswa>) : HomeUiState()
     object Error : HomeUiState()
@@ -26,32 +24,31 @@ class HomeViewModel(private val mhs: MahasiswaRepository) : ViewModel() {
     init {
         getMhs()
     }
-}
 
-fun getMhs() {
-    viewModelScope.launch {
-        mhsUiState = HomeUiState.Loading
-        mhsUiState = try {
-            HomeUiState.Success(mhs.getMahasiswa())
-        } catch (e: IOException) {
-            HomeUiState.Error
-        } catch (e: HttpException) {
-            HomeUiState.Error
+    fun getMhs() {
+        viewModelScope.launch {
+            mhsUiState = HomeUiState.Loading
+            mhsUiState = try {
+                HomeUiState.Success(mhs.getMahasiswa())
+            } catch (e: IOException) {
+                HomeUiState.Error
+            } catch (e: HttpException) {
+                HomeUiState.Error
+            }
         }
     }
-}
 
-fun deleteMhs(nim: String) {
-    viewModelScope.launch {
-        try {
-            mhs.deleteMahasiswa(nim)
-        } catch (e: IOException) {
-            HomeUiState.Error
-        } catch (e: HttpException) {
-            HomeUiState.Error
+    fun deleteMhs(nim: String) {
+        viewModelScope.launch {
+            try {
+                mhs.deleteMahasiswa(nim)
+            } catch (e: IOException) {
+                HomeUiState.Error
+            } catch (e: HttpException) {
+                HomeUiState.Error
+            }
         }
     }
-}
 }
 
 
