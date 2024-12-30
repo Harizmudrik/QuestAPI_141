@@ -1,7 +1,7 @@
 package com.example.prak8mysqldatainternet.ui.viewmodel
 
 import MahasiswaRepository
-import android.net.http.HttpException
+import coil.network.HttpException
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.prak8mysqldatainternet.model.Mahasiswa
