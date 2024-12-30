@@ -7,4 +7,16 @@ class InsertViewModel(private val mhs: MahasiswaRepository) : ViewModel() {
     fun updateInsertMhsState(insertUiEvent: InsertUiEvent) {
         uiState = InsertUiState(insertUiEvent = insertUiEvent)
     }
+
+    suspend fun insertMhs() {
+        viewModelScope.launch {
+            try {
+                mhs.insertMahasiswa(uiState.insertUiEvent.toMhs())
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+}
+
 }
