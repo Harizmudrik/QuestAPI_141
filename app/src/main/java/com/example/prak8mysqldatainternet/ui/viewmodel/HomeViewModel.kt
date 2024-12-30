@@ -1,5 +1,18 @@
 package com.example.prak8mysqldatainternet.ui.viewmodel
 
+import MahasiswaRepository
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import coil.network.HttpException
+import com.example.prak8mysqldatainternet.model.Mahasiswa
+import kotlinx.coroutines.launch
+import java.io.IOException
+
+
+
 sealed class HomeUiState {
     data class Success(val mahasiswa: List<Mahasiswa>) : HomeUiState()
     object Error : HomeUiState()
