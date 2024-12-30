@@ -6,3 +6,7 @@ import MahasiswaRepository
 interface AppContainer {
     val mahasiswaRepository: MahasiswaRepository
 }
+
+class MahasiswaContainer : AppContainer {
+
+}
