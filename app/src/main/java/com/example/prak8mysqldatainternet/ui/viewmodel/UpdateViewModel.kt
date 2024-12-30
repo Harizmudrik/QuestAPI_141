@@ -22,9 +22,11 @@ class UpdateViewModel(private val mhs: MahasiswaRepository) : ViewModel() {
             }
         }
     }
+
     fun updateMahasiswaState(updateUiEvent: UpdateUiEvent) {
         uiState = UpdateUiState(updateUiEvent = updateUiEvent)
     }
+
     suspend fun updateMahasiswa(nim: String) {
         viewModelScope.launch {
             try {
@@ -34,6 +36,18 @@ class UpdateViewModel(private val mhs: MahasiswaRepository) : ViewModel() {
             }
         }
     }
-    data class UpdateUiState(
-        val updateUiEvent: UpdateUiEvent = UpdateUiEvent()
-    )
+
+}
+
+data class UpdateUiState(
+    val updateUiEvent: UpdateUiEvent = UpdateUiEvent()
+)
+
+data class UpdateUiEvent(
+    val nim: String = "",
+    val nama: String = "",
+    val alamat: String = "",
+    val jenis_kelamin: String = "",
+    val kelas: String = "",
+    val angkatan: String = ""
+)
