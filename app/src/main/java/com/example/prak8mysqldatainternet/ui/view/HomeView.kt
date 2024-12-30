@@ -42,6 +42,7 @@ import com.example.prak8mysqldatainternet.navigation.DestinasiNavigasi
 import com.example.prak8mysqldatainternet.ui.customwidget.CostumeTopAppBar
 import com.example.prak8mysqldatainternet.ui.viewmodel.HomeUiState
 import com.example.prak8mysqldatainternet.ui.viewmodel.HomeViewModel
+import com.example.prak8mysqldatainternet.ui.viewmodel.PenyediaViewModel
 
 object DestinasiHome : DestinasiNavigasi {
     override val route = "home"
