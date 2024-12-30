@@ -34,3 +34,6 @@ class UpdateViewModel(private val mhs: MahasiswaRepository) : ViewModel() {
             }
         }
     }
+    data class UpdateUiState(
+        val updateUiEvent: UpdateUiEvent = UpdateUiEvent()
+    )
