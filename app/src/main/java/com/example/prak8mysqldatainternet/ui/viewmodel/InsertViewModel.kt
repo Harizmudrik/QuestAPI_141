@@ -39,3 +39,10 @@ fun InsertUiEvent.toMhs(): Mahasiswa = Mahasiswa(
     kelas = kelas,
     angkatan = angkatan
 )
+
+fun Mahasiswa.toUiStateMhs(): InsertUiState = InsertUiState(
+    insertUiEvent = this.toInsertUiEvent()
+)
+
+
+
