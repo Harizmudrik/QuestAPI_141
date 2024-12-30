@@ -62,6 +62,13 @@ fun UpdateUiEvent.toMahasiswa(): Mahasiswa = Mahasiswa(
     angkatan = angkatan
 )
 
-
+fun Mahasiswa.toUpdateUiEvent(): UpdateUiEvent = UpdateUiEvent(
+    nim = nim,
+    nama = nama,
+    alamat = alamat,
+    jenis_kelamin = jenis_kelamin,
+    kelas = kelas,
+    angkatan = angkatan
+)
 
 
