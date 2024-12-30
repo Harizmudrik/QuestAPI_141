@@ -22,3 +22,6 @@ class UpdateViewModel(private val mhs: MahasiswaRepository) : ViewModel() {
             }
         }
     }
+    fun updateMahasiswaState(updateUiEvent: UpdateUiEvent) {
+        uiState = UpdateUiState(updateUiEvent = updateUiEvent)
+    }
