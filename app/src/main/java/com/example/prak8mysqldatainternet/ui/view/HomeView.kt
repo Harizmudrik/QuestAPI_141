@@ -92,3 +92,97 @@ fun OnLoading(modifier: Modifier = Modifier) {
         contentDescription = stringResource(R.string.loading)
     )
 }
+
+@Composable
+fun OnError(retryAction: () -> Unit, modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_connection_error),
+            contentDescription = ""
+        )
+        Text(text = stringResource(R.string.loading_failed), modifier = Modifier.padding(16.dp))
+        Button(onClick = retryAction) {
+            Text(stringResource(R.string.retry))
+        }
+    }
+}
+
+@Composable
+fun MhsLayout(
+    mahasiswa: List<Mahasiswa>,
+    modifier: Modifier = Modifier,
+    onDetailClick: (Mahasiswa) -> Unit,
+    onDeleteClick: (Mahasiswa) -> Unit = {}
+) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        items(mahasiswa) { mhs ->
+            MhsCard(
+                mahasiswa = mhs,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onDetailClick(mhs) },
+                onDeleteClick = {
+                    onDeleteClick(mhs)
+                }
+            )
+        }
+    }
+}
+
+@Composable
+fun MhsCard(
+    mahasiswa: Mahasiswa,
+    modifier: Modifier = Modifier,
+    onDeleteClick: (Mahasiswa) -> Unit = {}
+) {
+    Card(
+        modifier = modifier,
+        shape = MaterialTheme.shapes.medium,
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = mahasiswa.nama,
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Spacer(Modifier.weight(1f))
+                IconButton(onClick = { onDeleteClick(mahasiswa) }) {
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        contentDescription = null
+                    )
+                }
+            }
+            Text(
+                text = mahasiswa.nim,
+                style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = mahasiswa.kelas,
+                style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = mahasiswa.alamat,
+                style = MaterialTheme.typography.titleMedium
+            )
+        }
+    }
+}
+
+
+
