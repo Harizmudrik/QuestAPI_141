@@ -8,5 +8,6 @@ interface AppContainer {
 }
 
 class MahasiswaContainer : AppContainer {
+    private val baseUrl = "http://localhost/UmyTI/"
 
 }
