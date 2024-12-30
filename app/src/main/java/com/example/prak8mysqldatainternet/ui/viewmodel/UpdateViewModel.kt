@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.prak8mysqldatainternet.model.Mahasiswa
 import kotlinx.coroutines.launch
 
 class UpdateViewModel(private val mhs: MahasiswaRepository) : ViewModel() {
@@ -51,3 +52,16 @@ data class UpdateUiEvent(
     val kelas: String = "",
     val angkatan: String = ""
 )
+
+fun UpdateUiEvent.toMahasiswa(): Mahasiswa = Mahasiswa(
+    nim = nim,
+    nama = nama,
+    alamat = alamat,
+    jenis_kelamin = jenis_kelamin,
+    kelas = kelas,
+    angkatan = angkatan
+)
+
+
+
+
