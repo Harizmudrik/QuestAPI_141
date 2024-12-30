@@ -1,5 +1,15 @@
 package com.example.prak8mysqldatainternet.ui.viewmodel
 
+import MahasiswaRepository
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.prak8mysqldatainternet.model.Mahasiswa
+import kotlinx.coroutines.launch
+
+
 class InsertViewModel(private val mhs: MahasiswaRepository) : ViewModel() {
     var uiState by mutableStateOf(InsertUiState())
         private set
